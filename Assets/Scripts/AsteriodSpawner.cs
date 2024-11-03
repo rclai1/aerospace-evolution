@@ -1,32 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AsteriodSpawner : MonoBehaviour
 {
-    public Asteriod asteriodPrefab;
-    public float spawnRate = 1.0f;
+    public GameObject asteriodPrefab;
+    public float spawnTime = 1.0f;
     public int spawnAmount = 5;
-    public float spawnY = 100.0f;
-    public float asteriodSpeed = 50.0f;
     public float trajectoryVariance = 15.0f;
-    public float spawnX = 50.0f;
+    private Vector2 screenBounds;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        InvokeRepeating(nameof(Spawn), this.spawnRate, this.spawnRate);
+        screenBounds = Camera.main.ScreenToWorldPoint(
+            new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        StartCoroutine(asteriodWave());
     }
 
-    private void Spawn()
+    private void spawn()
     {
         for (int i = 0; i < this.spawnAmount; i++) {
-            Vector3 spawnDirection = new Vector3(Random.Range(-spawnX, spawnX), spawnY, 0);
-            Vector2 spawnPoint = this.transform.position + spawnDirection;
+            GameObject asteriod = Instantiate(this.asteriodPrefab) as GameObject;
+            asteriod.transform.position = new Vector2(
+                Random.Range(-screenBounds.x, screenBounds.x), screenBounds.y);
+        }
+    }
 
-            float variance = Random.Range(-trajectoryVariance, trajectoryVariance);
-            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
-
-            Asteriod asteriod = Instantiate(this.asteriodPrefab, spawnPoint, rotation);
-            
-            asteriod.SetTrajectory(rotation * -spawnDirection);
+    IEnumerator asteriodWave() {
+        while (true) {
+            yield return new WaitForSeconds(spawnTime);
+            spawn();
         }
     }
 }

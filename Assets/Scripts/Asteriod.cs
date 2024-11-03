@@ -1,14 +1,16 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Asteriod : MonoBehaviour
 {
+    public Sprite[] sprites;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rigidbody;
-    public Sprite[] sprites;
     public float minSize = 0.5f;
     public float maxSize = 3.0f;
-    public float maxLifetime = 30.0f;
     public float speed = 10.0f;
+    private Vector2 screenBounds;
 
     private void Start()
     {
@@ -17,15 +19,17 @@ public class Asteriod : MonoBehaviour
         this.transform.localScale = Vector3.one * Random.Range(minSize, maxSize);
     }
 
-    // Update is called once per frame
-    private void Awake()
-    {
+    private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.linearVelocity = new Vector2(0, -speed);
+        screenBounds = Camera.main.ScreenToWorldPoint(
+            new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
-    public void SetTrajectory(Vector2 direction) {
-        rigidbody.AddForce(direction * this.speed);
-        Destroy(this.gameObject, this.maxLifetime);
+    private void Update() {
+        if (this.transform.position.y < screenBounds.y) {
+            Destroy(this.gameObject);
+        }
     }
 }
