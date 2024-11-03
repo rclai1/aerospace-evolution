@@ -1,2 +1,5 @@
-# aerospace-evolution
-A simple 2d bullet hell themed around the evolution of aerospace technologies from the Wright Brothers to modern space travel.
+# Description
+A simple game where you dodge asteroids in space with your funny space ship.
+
+# Attributions
+Used assets from "2D Space Kit" by Brett Gregory on Unity Asset Store.
