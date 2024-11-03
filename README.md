@@ -1,5 +1,5 @@
 # Description
-A simple game where you dodge asteroids in space with your funny space ship.
+A simple game where you dodge asteroids in space with your funny space ship. Use WASD to navigate your space ship around the galaxy and avoid incoming asteroids for as long as you can!
 
 # Downloads
 If you want to try this out for yourself (please do), check out this link: https://drive.google.com/file/d/12um6s2RJVC62IC9MobEGr42gTY12nNXL/view?usp=sharing
