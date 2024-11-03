@@ -17,6 +17,7 @@ public class Asteriod : MonoBehaviour
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         this.transform.eulerAngles = new Vector3(0.0f, 0.0f, Random.value * 360.0f);
         this.transform.localScale = Vector3.one * Random.Range(minSize, maxSize);
+        this.speed = (float)Random.Range(5,10);
     }
 
     private void Awake() {
