@@ -35,4 +35,7 @@ public class PlayerManager : MonoBehaviour
     public void replayGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void MainMenu() {
+        SceneManager.LoadScene(0);
+    }
 }
