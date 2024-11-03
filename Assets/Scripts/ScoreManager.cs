@@ -22,4 +22,7 @@ public class ScoreManager : MonoBehaviour
         scoreValueText.text = ((int)scoreValue).ToString();
         scoreValue += pointIncreasePerSecond * Time.deltaTime;
     }
+    public void setZero() {
+        scoreValue = 0f;
+    }
 }

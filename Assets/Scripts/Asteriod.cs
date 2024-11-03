@@ -28,8 +28,11 @@ public class Asteriod : MonoBehaviour
     }
 
     private void Update() {
-        if (this.transform.position.y < screenBounds.y) {
-            Destroy(this.gameObject);
-        }
+       // if (this.transform.position.y < screenBounds.y) {
+        //    Destroy(this.gameObject);
+        //}
+    }
+    void OnBecameInvisible() {
+        Destroy(this.gameObject);
     }
 }
