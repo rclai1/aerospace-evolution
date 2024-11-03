@@ -6,3 +6,4 @@ If you want to try this out for yourself (please do), check out this link: https
 
 # Attributions
 Used assets from "2D Space Kit" by Brett Gregory on Unity Asset Store.
+Audio used is from "Legendary JRPG Battle Music Pack" by YouFulca
