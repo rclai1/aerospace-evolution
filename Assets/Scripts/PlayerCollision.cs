@@ -7,8 +7,9 @@ public class PlayerCollision : MonoBehaviour
     void OnCollisionEnter2D(UnityEngine.Collision2D collision)
     {
         if (collision.transform.tag == "Enemy") {
-            Debug.Log("Game Over");
+            PlayerManager.isGameOver = true;
             score.GetComponent<ScoreManager>().setZero();
+            gameObject.SetActive(false);
         }
     }
 }
